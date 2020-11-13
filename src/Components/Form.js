@@ -1,12 +1,14 @@
 import {useState} from 'react';
+import * as yup from 'yup';
 
 
 export default function Form(props) {
-    const [user, setUser] = useState({Name: "", Email: "", Password: ""});
+    const [user, setUser] = useState({Name: "", Email: "", Password: "", Terms: false});
     const addUser = props.addUser
 
     const handleChange = e => {
-        setUser({...user, [e.target.name]: e.target.value})
+        let value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
+        setUser({...user, [e.target.name]: value})
     };
     const handleSubmit = e => {
         e.preventDefault();
@@ -26,7 +28,7 @@ export default function Form(props) {
               <input type="text" onChange={e => handleChange(e)} name='Password' value={user.Password} />
           </label>
           <label>Terms Of Service:
-              <input type="checkbox" />
+              <input type="checkbox" checked={user.Terms} name='Terms' onChange={e => handleChange(e)}/>
           </label>
           <button>Submit</button>
       </form>
