@@ -1,10 +1,8 @@
 
 
 export default function Users(props) {
-    console.log(props.users, 'props from users component')
     const users = props.users.map(item => {
-        console.log(item, 'in map')
-        return <li>Name: {item.user.user.Name} Email: {item.user.user.Email}</li>
+        return <li>Name: {item.user.userObj.Name} Email: {item.user.userObj.Email}</li>
     });
     return (
       <ul>
@@ -12,3 +10,4 @@ export default function Users(props) {
       </ul>
     );
   }
+

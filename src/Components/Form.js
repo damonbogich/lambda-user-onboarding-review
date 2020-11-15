@@ -1,6 +1,7 @@
 import {useState} from 'react';
 import {formSchema} from './FormSchema';
 import * as yup from 'yup';
+import Axios from 'axios';
 
 
 
@@ -16,10 +17,22 @@ export default function Form(props) {
         let value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
         setUser({...user, [e.target.name]: value})
     };
+   
     const handleSubmit = e => {
         e.preventDefault();
         console.log(user, 'user log in handleSubmit');
-        addUser({user});
+        Axios
+        .post('https://reqres.in/api/users', user)
+        .then(res => {
+            console.log(res, 'response from post submit')
+            let data = res.data;
+            let userObj = {Name: data.Name, Email: data.Email, Password: data.Password, Terms: data.Terms}
+            console.log(userObj, 'userobj')
+            addUser({userObj})
+        })
+        .catch(err => {
+            console.log(err)
+        })
     }
 
     const validate = e => {
@@ -60,4 +73,4 @@ export default function Form(props) {
           <button>Submit</button>
       </form>
     );
-  }
+};
