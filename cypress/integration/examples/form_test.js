@@ -17,14 +17,14 @@ describe('Testing Form Inputs', () => {
     })
     it("Inputs a name into the name input", () => {
         cy
-        .get("input[name='Name']")
+        .get("[data-cy=Name]")
         .type("Damon Bogich")
         .should('have.value', "Damon Bogich")
         .clear()
         cy.contains("name is a required field")
     })
     it("Inputs an email into the email input", () => {
-        cy.get("input[name='Email']")
+        cy.get("[data-cy=Email]")
         .type("damonbogich@gmail.com")
         .should('have.value', "damonbogich@gmail.com")
     })

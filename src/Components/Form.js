@@ -69,7 +69,7 @@ export default function Form(props) {
                 {errorState.Name !== "" ? <p>{errorState.Name}</p> : null}
           </label>
           <label>Email:
-              <input type="text" onChange={e => handleChange(e)} name='Email' value={user.Email}/>
+              <input data-cy="Email" type="text" onChange={e => handleChange(e)} name='Email' value={user.Email}/>
               {errorState.Email !== "" ? <p>{errorState.Email}</p> : null}
           </label>
           <label>Password:
