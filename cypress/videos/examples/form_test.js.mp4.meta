@@ -1,0 +1,26 @@
+;FFMETADATA1
+[CHAPTER]
+TIMEBASE=1/1000
+START=9250
+END=10736
+title=Testing Form Inputs Inputs a name into the name input
+[CHAPTER]
+TIMEBASE=1/1000
+START=11436
+END=12228
+title=Testing Form Inputs Inputs an email into the email input
+[CHAPTER]
+TIMEBASE=1/1000
+START=12484
+END=13023
+title=Testing Form Inputs Inputs a password into the password input
+[CHAPTER]
+TIMEBASE=1/1000
+START=13119
+END=13564
+title=Testing Form Inputs Checks the checkbox
+[CHAPTER]
+TIMEBASE=1/1000
+START=13746
+END=14013
+title=Testing Form Inputs Submits the Form
