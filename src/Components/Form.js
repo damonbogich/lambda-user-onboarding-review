@@ -57,7 +57,7 @@ export default function Form(props) {
     return (
       <form onSubmit={(e) => handleSubmit(e)}>
           <label>Name:
-              <input type="text" onChange={(e) => handleChange(e)} name='Name' value={user.Name} />
+              <input data-cy="Name" type="text" onChange={(e) => handleChange(e)} name='Name' value={user.Name} />
                 {errorState.Name !== "" ? <p>{errorState.Name}</p> : null}
           </label>
           <label>Email:
