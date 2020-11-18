@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import {formSchema} from './FormSchema';
 import * as yup from 'yup';
 import Axios from 'axios';
@@ -8,6 +8,7 @@ import Axios from 'axios';
 export default function Form(props) {
     const [user, setUser] = useState({Name: "", Email: "", Password: "", Terms: false});
     const [errorState, setErrorState] = useState({Name: "", Email: "", Password: "", Terms: ""});
+    const [buttonDisabled, setButtonDisabled] = useState(true);
 
 
     const addUser = props.addUser
@@ -17,6 +18,13 @@ export default function Form(props) {
         let value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
         setUser({...user, [e.target.name]: value})
     };
+
+    useEffect(() => {
+        formSchema.isValid(user).then(valid => {
+            console.log(valid)
+            setButtonDisabled(!valid)
+        });
+    }, [user])
    
     const handleSubmit = e => {
         e.preventDefault();
@@ -70,7 +78,7 @@ export default function Form(props) {
           <label>Terms Of Service:
               <input type="checkbox" checked={user.Terms} name='Terms' onChange={e => handleChange(e)}/>
           </label>
-          <button>Submit</button>
+          <button disabled={buttonDisabled}>Submit</button>
       </form>
     );
 };
